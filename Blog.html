@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Blog</title>
+</head>
+<body>
+  <h1>My Blog</h1>
+
+  <!-- Form for submitting new posts -->
+  <form id="postForm">
+    <label for="postTitle">Title:</label><br>
+    <input type="text" id="postTitle" name="postTitle"><br>
+    <label for="postContent">Content:</label><br>
+    <textarea id="postContent" name="postContent" rows="4" cols="50"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr>
+
+  <!-- Section to display existing posts -->
+  <div id="postsContainer">
+    <!-- Posts will be dynamically added here -->
+  </div>
+
+  <script>
+    // Function to handle form submission
+    document.getElementById("postForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent default form submission behavior
+      var title = document.getElementById("postTitle").value;
+      var content = document.getElementById("postContent").value;
+      addPost(title, content); // Call function to add post
+      document.getElementById("postForm").reset(); // Reset form fields
+    });
+
+    // Function to add a new post to the page
+    function addPost(title, content) {
+      var postsContainer = document.getElementById("postsContainer");
+      var postElement = document.createElement("div");
+      postElement.innerHTML = "<h2>" + title + "</h2><p>" + content + "</p><hr>";
+      postsContainer.prepend(postElement); // Add post to the beginning of the container
+    }
+  </script>
+</body>
+</html>
 
